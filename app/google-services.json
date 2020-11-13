@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "117376688536",
+    "firebase_url": "https://skripsi-b2ba3.firebaseio.com",
+    "project_id": "skripsi-b2ba3",
+    "storage_bucket": "skripsi-b2ba3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117376688536:android:3d5fe541b9317598770bed",
+        "android_client_info": {
+          "package_name": "com.example.aplicationopa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117376688536-rp9erqd5kmq806pq8kudcb841afdftok.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplicationopa",
+            "certificate_hash": "74eb0e1849cd83fbfb40f935956a16d4019f458b"
+          }
+        },
+        {
+          "client_id": "117376688536-qun5c4bnpr180g8t1m1iclfraheq4ev9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuoEQO4TkkRSZSx3dlOFHC2UPODVHYhQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117376688536-qun5c4bnpr180g8t1m1iclfraheq4ev9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">AplicationOPA</string>
+    <string name="access_token">pk.eyJ1Ijoiem9leTY5IiwiYSI6ImNraDk2czE4azEyd28yeG56N2wwcWR2eDAifQ.ckpBXZ908Kcgtyhz1SH-vQ</string>
+    <string name="user_location_permission_explanation">This app needs location permissions to show its functionality.</string>
+    <string name="user_location_permission_not_granted">You didn\'t grant location permissions.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="already_have_an_account">already have an account ?....</string>
+    <string name="btn_register">Register</string>
+    <string name="full_name">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="login">login</string>
+    <string name="register">Register</string>
+    <string name="don_t_have_an_account">don\'t have an account ?....</string>
+</resources>
