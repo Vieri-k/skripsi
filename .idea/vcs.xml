@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Content Provider/Android-content-provider-example" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Map Place SDK/PlacesProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MapBox Place/Shift_House" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Maps me/api-android" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MapsNew/PlacesProject" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OPA" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/OPA/App/Kemana" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SMS gateway/SMSGatewaayPenjualan" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SMS gateway/SMSGatewayInventory" vcs="Git" />
+  </component>
+</project>
