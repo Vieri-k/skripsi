@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AplicationOPA</string>
+    <string name="app_name">OPA</string>
     <string name="user_location_permission_explanation">This app needs location permissions to show its functionality.</string>
     <string name="user_location_permission_not_granted">You didn\'t grant location permissions.</string>
     <string name="email">Email</string>
@@ -13,4 +13,6 @@
     <string name="don_t_have_an_account">don\'t have an account ?....</string>
     <string name="new_loacation">-7.866688</string>
     <string name="access_token">sk.eyJ1Ijoicml6a3k5OTkiLCJhIjoiY2toZ2VrOWQxMGdqODJ5bWNocmhnZWI5aSJ9.F_IdYdzb0t68T8bOAPhsbg</string>
+    <string name="todo">TODO</string>
+    <string name="forgot_possword">Forgot Possword ?</string>
 </resources>

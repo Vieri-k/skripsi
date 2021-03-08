@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Dashboard">
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profile"
+        android:onClick="profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_gravity="right"
+        app:layout_constraintTop_toTopOf="parent"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/warnautama"
+        app:srcCompat="@drawable/ic_person"
+        tools:ignore="MissingConstraints,VectorDrawableCompat"
+        android:contentDescription="@string/todo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary_neutral">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="270dp"
+                android:src="@drawable/logo"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/cabin"
+                android:text="OPA APP"
+                android:textColor="#000000"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Get Started"
+                android:fontFamily="@font/cabin"
+                android:textColor="#ffffff"
+                android:background="@drawable/buttondashboard" />
+
+<!--            <Button-->
+<!--                android:onClick="Markermap"-->
+<!--                android:layout_width="200dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_margin="20dp"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="Get Started"-->
+<!--                android:fontFamily="@font/cabin"-->
+<!--                android:textColor="#ffffff"-->
+<!--                android:background="@drawable/buttondashboard" />-->
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

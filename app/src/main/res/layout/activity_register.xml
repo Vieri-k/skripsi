@@ -1,124 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/register_bg"
+    android:background="@color/mapbox_plugins_white"
     tools:context=".Register">
 
-    <EditText
-        android:id="@+id/regisName"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:paddingStart="10dp"
-        android:elevation="6dp"
-        android:hint="@string/full_name"
-        android:textSize="14sp"
-        android:inputType="textPersonName"
-        android:background="@drawable/edit"
-        android:drawableStart="@drawable/ic_person"
-        android:drawablePadding="10dp"
-        android:layout_margin="14dp"/>
-
-    <EditText
-        android:id="@+id/Email_Regis"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:paddingStart="10dp"
-        android:elevation="6dp"
-        android:hint="@string/email"
-        android:textSize="14sp"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/edit"
-        android:drawableStart="@drawable/ic_email_black_24dp"
-        android:drawablePadding="10dp"
-        android:layout_margin="14dp"/>
-
-    <EditText
-        android:id="@+id/Pass_Regis"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:paddingStart="10dp"
-        android:elevation="6dp"
-        android:hint="@string/password"
-        android:textSize="14sp"
-        android:inputType="textPassword"
-        android:background="@drawable/edit"
-        android:drawableStart="@drawable/ic_lock"
-        android:drawablePadding="10dp"
-        android:layout_margin="14dp"/>
-
-    <EditText
-        android:id="@+id/Phone_Regis"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:paddingStart="10dp"
-        android:elevation="6dp"
-        android:hint="@string/phone_number"
-        android:textSize="14sp"
-        android:inputType="number"
-        android:background="@drawable/edit"
-        android:drawableStart="@drawable/ic_phone"
-        android:drawablePadding="10dp"
-        android:layout_margin="14dp"
-        tools:ignore="TextFields" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/already_have_an_account"
-            android:textSize="14sp"
-            android:gravity="center"/>
+            android:layout_margin="10dp"
+            android:layout_gravity="center">
 
-        <TextView
-            android:id="@+id/Logintxt"
-            android:onClick="Login"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:src="@drawable/adak"/>
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="14sp"
-            android:textColor="@color/edit_text"
-            android:gravity="center"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:paddingTop="30dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnRegiss"
-            android:onClick="btnRegis"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:text="@string/register"
-            android:background="@drawable/button"/>
-
-        <ProgressBar
-            android:id="@+id/progree_bar"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_margin="20dp"
             android:padding="2dp"
-            android:visibility="invisible" />
+            android:paddingStart="10dp"
+            android:elevation="6dp"
+            android:hint="@string/full_name"
+            android:textSize="14sp"
+            android:inputType="textPersonName"
+            android:background="@drawable/edit"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:layout_margin="14dp"/>
 
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:elevation="6dp"
+            android:hint="@string/email"
+            android:textSize="14sp"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/edit"
+            android:drawableStart="@drawable/ic_email_black_24dp"
+            android:drawablePadding="10dp"
+            android:layout_margin="14dp"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:elevation="6dp"
+            android:hint="@string/password"
+            android:textSize="14sp"
+            android:inputType="textPassword"
+            android:background="@drawable/edit"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="10dp"
+            android:layout_margin="14dp"/>
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:paddingStart="10dp"
+            android:elevation="6dp"
+            android:hint="@string/phone_number"
+            android:textSize="14sp"
+            android:inputType="number"
+            android:background="@drawable/edit"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:layout_margin="14dp"
+            tools:ignore="TextFields" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/already_have_an_account"
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/Logintxt"
+                android:onClick="Login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textSize="14sp"
+                android:textColor="@color/navigationRouteLine_neutral"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnRegiss"
+                android:onClick="btnRegis"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="@string/register"
+                android:textColor="#000000"
+                android:background="@drawable/button"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progres_bar_register"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:padding="2dp"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

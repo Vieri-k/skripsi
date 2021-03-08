@@ -1,20 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home">
+    tools:context=".MainActivity">
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        mapbox:layout_constraintBottom_toBottomOf="parent"
-        mapbox:layout_constraintEnd_toEndOf="parent"
-        mapbox:layout_constraintStart_toStartOf="parent"
-        mapbox:layout_constraintTop_toTopOf="parent"
-        mapbox:mapbox_cameraTargetLat="-7.866688"
-        mapbox:mapbox_cameraTargetLng="111.466614"
-        mapbox:mapbox_cameraZoom="12"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapbox_cameraZoom="12"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_location_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_margin="16dp"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/warnautama"
+        app:srcCompat="@android:drawable/ic_search_category_default"
+        android:contentDescription="@string/todo"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="155dp"
+        android:layout_gravity="bottom"
+        android:background="?attr/colorPrimary"
+        app:cardCornerRadius="10dp"
+        tools:ignore="MissingPrefix">
+        <TextView
+            android:id="@+id/s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:fontFamily="@font/basic"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:hint="Your Destination"
+            android:textColor="@color/cardHourAndPhoneTextColor_neutral"
+            android:textSize="12sp"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/map_view_location_card"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="bottom"
+        android:background="?attr/colorPrimary"
+        app:cardCornerRadius="10dp"
+        tools:ignore="MissingPrefix">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/distanceView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 Km"
+                        android:fontFamily="@font/basic"
+                        android:textColor="@color/cardHourAndPhoneTextColor_neutral"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/basic"
+                        android:text="Rp. 0,00"
+                        android:textSize="16sp"
+                        android:textColor="@color/cardHourAndPhoneTextColor_neutral"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/warnautama"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btnStart"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
+                    android:text="Order"
+                    android:textColor="@color/cardHourAndPhoneTextColor_neutral"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/basic"
+                    android:enabled="false"
+                    android:background="@drawable/button"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </FrameLayout>
