@@ -15,7 +15,7 @@ public class OrderConfirm extends RecyclerView.Adapter<OrderConfirm.OrderViewHol
     private Context mCtx;
     private List<ComfirmedOrder> comfirmed;
 
-    public OrderConfirm(Context mCtx, List<order> orderL){
+    public OrderConfirm(Context mCtx, List<OrderConfirmationActivity> orderL){
         this.mCtx = mCtx;
         this.comfirmed = comfirmed;
     }

@@ -1,12 +1,12 @@
 package com.example.aplicationopa;
 
-public class model {
+public class OjekModel {
         String name,phone,region;
-        model()
+        OjekModel()
         {
 
         }
-        public model(String name, String phone, String region) {
+        public OjekModel(String name, String phone, String region) {
             this.name = name;
             this.phone = phone;
             this.region = region;

@@ -9,7 +9,7 @@
     android:background="@color/colorPrimaryDark_neutral"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ontheway">
+    tools:context=".OnthewayActivity">
 
     <com.mapbox.mapboxsdk.maps.MapView
         android:id="@+id/mapView"

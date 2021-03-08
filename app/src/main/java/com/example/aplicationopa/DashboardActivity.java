@@ -4,20 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
-
-import com.google.android.material.bottomsheet.BottomSheetDialog;
-
-import static android.widget.Toast.LENGTH_SHORT;
-
-public class Dashboard extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     private boolean isGPS = false;
@@ -50,7 +42,7 @@ public class Dashboard extends AppCompatActivity {
 //                return;
 //                }
                 isContinue = false;
-                Intent intent = new Intent(Dashboard.this,home.class);
+                Intent intent = new Intent(DashboardActivity.this, HomeActivity.class);
                 startActivity(intent);
 //                ToMap();
             }
@@ -62,7 +54,7 @@ public class Dashboard extends AppCompatActivity {
     }
 
     public void profile(View view){
-        Intent intent = new Intent(getApplicationContext(),userprofile.class);
+        Intent intent = new Intent(getApplicationContext(), UserProfileActivity.class);
         startActivity(intent);
     }
 

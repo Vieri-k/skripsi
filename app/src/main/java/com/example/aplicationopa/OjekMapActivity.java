@@ -8,24 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -45,7 +36,6 @@ import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
-import com.mapbox.mapboxsdk.annotations.Marker;
 import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.camera.CameraPosition;
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
@@ -83,7 +73,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 
-public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
+public class OjekMapActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
 
     private static final String DESTINATION_SYMBOL_LAYER_ID = "destination-symbol-layer-id";
     private static final String DESTINATION_ICON_ID = "destination-icon-id";
@@ -98,7 +88,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
     private static final String TAG = "MainActivity";
     private int status = 0;
 
-    com.example.aplicationopa.adapterojek adapter;
+    OjekAdapter adapter;
     private RecyclerView recyclerView;
 
 
@@ -131,7 +121,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
         reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                UserModel user = snapshot.getValue(UserModel.class);
 
                 if (user != null){
                     String fullname = user.getName();
@@ -142,7 +132,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(MainOjek.this,"Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(OjekMapActivity.this,"Error !",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -174,7 +164,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
                     @Override
                     public void run() {
 
-                        servisku.getLocation(MainOjek.this);
+                        servisku.getLocation(OjekMapActivity.this);
 
                         if (servisku.canGetLocation()) {
 
@@ -227,12 +217,12 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseRecyclerOptions<model> options =
-                new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("driver").limitToFirst(1), model.class)
+        FirebaseRecyclerOptions<OjekModel> options =
+                new FirebaseRecyclerOptions.Builder<OjekModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("driver").limitToFirst(1), OjekModel.class)
                         .build();
 
-        adapter = new adapterojek(options);
+        adapter = new OjekAdapter(options);
         recyclerView.setAdapter(adapter);
 
     }
@@ -308,7 +298,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
         options2.position(new LatLng(-7.902775764933118, 111.49047078305887));
 
         IconFactory iconFactory;
-        iconFactory = IconFactory.getInstance(MainOjek.this);
+        iconFactory = IconFactory.getInstance(OjekMapActivity.this);
         Icon icon = iconFactory.fromResource(R.drawable.ic_motorcycle);
         options.icon(icon);
         options2.icon(icon);
@@ -439,10 +429,10 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
                     public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
                         Timber.d("Response code: " + response.code());
                         if (response.body() == null) {
-                            Toast.makeText(MainOjek.this, "No routes found, make sure you set the right user and access token.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OjekMapActivity.this, "No routes found, make sure you set the right user and access token.", Toast.LENGTH_SHORT).show();
                             return;
                         } else if (response.body().routes().size() < 1) {
-                            Toast.makeText(MainOjek.this, "No routes found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(OjekMapActivity.this, "No routes found", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         currentRoute = response.body().routes().get(0);
@@ -451,12 +441,12 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
                                 .directionsRoute(currentRoute)
                                 .shouldSimulateRoute(true)
                                 .build();
-                        NavigationLauncher.startNavigation(MainOjek.this, options);
+                        NavigationLauncher.startNavigation(OjekMapActivity.this, options);
                     }
 
                     @Override
                     public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-                        Toast.makeText(MainOjek.this, "Error: " + t.getMessage(),
+                        Toast.makeText(OjekMapActivity.this, "Error: " + t.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -493,7 +483,7 @@ public class MainOjek extends AppCompatActivity implements OnMapReadyCallback, P
                     @Override
                     public void onFailure(Call<DirectionsResponse> call, Throwable throwable) {
                         Timber.e("Error: " + throwable.getMessage());
-                        Toast.makeText(MainOjek.this, "Error: " + throwable.getMessage(),
+                        Toast.makeText(OjekMapActivity.this, "Error: " + throwable.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -2,31 +2,23 @@ package com.example.aplicationopa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.gson.JsonObject;
 import com.mapbox.android.core.permissions.PermissionsListener;
 import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.api.directions.v5.MapboxDirections;
@@ -36,10 +28,8 @@ import com.mapbox.api.geocoding.v5.GeocodingCriteria;
 import com.mapbox.api.geocoding.v5.MapboxGeocoding;
 import com.mapbox.api.geocoding.v5.models.CarmenFeature;
 import com.mapbox.api.geocoding.v5.models.GeocodingResponse;
-import com.mapbox.core.constants.Constants;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.FeatureCollection;
-import com.mapbox.geojson.LineString;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Marker;
@@ -59,7 +49,6 @@ import com.mapbox.mapboxsdk.plugins.places.autocomplete.PlaceAutocomplete;
 import com.mapbox.mapboxsdk.plugins.places.autocomplete.model.PlaceOptions;
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
-import com.mapbox.mapboxsdk.utils.BitmapUtils;
 import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher;
 import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions;
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute;
@@ -81,7 +70,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconOffset;
 
 //email diosooi29@gmail.com
-public class home extends AppCompatActivity implements
+public class HomeActivity extends AppCompatActivity implements
         OnMapReadyCallback, PermissionsListener{
 
     private static final String DESTINATION_SYMBOL_LAYER_ID = "destination-symbol-layer-id";
@@ -128,7 +117,7 @@ public class home extends AppCompatActivity implements
         BtnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(home.this,order.class);
+                Intent i = new Intent(HomeActivity.this, OrderConfirmationActivity.class);
 //                Intent in = new Intent(home.this,ontheway.class);
                 i.putExtra("total distance",distance+"");
                 i.putExtra("start","To :"+startLocation+"");
@@ -183,7 +172,7 @@ public class home extends AppCompatActivity implements
                                 .backgroundColor(Color.parseColor("#EEEEEE"))
                                 .limit(10)
                                 .build(PlaceOptions.MODE_CARDS))
-                        .build(home.this);
+                        .build(HomeActivity.this);
                 startActivityForResult(intent, REQUEST_CODE_AUTOCOMPLETE);
             }
         });
@@ -335,10 +324,10 @@ public class home extends AppCompatActivity implements
                     public void onResponse(Call<DirectionsResponse> call, Response<DirectionsResponse> response) {
                         Timber.d("Response code: " + response.code());
                         if (response.body() == null) {
-                            Toast.makeText(home.this, "No routes found, make sure you set the right user and access token.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "No routes found, make sure you set the right user and access token.", Toast.LENGTH_SHORT).show();
                             return;
                         } else if (response.body().routes().size() < 1) {
-                            Toast.makeText(home.this, "No routes found", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "No routes found", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         currentRoute = response.body().routes().get(0);
@@ -347,12 +336,12 @@ public class home extends AppCompatActivity implements
                                 .directionsRoute(currentRoute)
                                 .shouldSimulateRoute(true)
                                 .build();
-                        NavigationLauncher.startNavigation(home.this, options);
+                        NavigationLauncher.startNavigation(HomeActivity.this, options);
                     }
 
                     @Override
                     public void onFailure(Call<DirectionsResponse> call, Throwable t) {
-                        Toast.makeText(home.this, "Error: " + t.getMessage(),
+                        Toast.makeText(HomeActivity.this, "Error: " + t.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -401,7 +390,7 @@ public class home extends AppCompatActivity implements
                     @Override
                     public void onFailure(Call<DirectionsResponse> call, Throwable throwable) {
                         Timber.e("Error: " + throwable.getMessage());
-                        Toast.makeText(home.this, "Error: " + throwable.getMessage(),
+                        Toast.makeText(HomeActivity.this, "Error: " + throwable.getMessage(),
                                 Toast.LENGTH_SHORT).show();
                     }
                 });

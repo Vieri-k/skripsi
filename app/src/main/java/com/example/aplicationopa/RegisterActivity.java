@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,9 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
     EditText rFullName, rEmail, rPass, rPhone;
     Button rBtnRegis;
     TextView rTextLogin;
@@ -59,7 +57,7 @@ public class Register extends AppCompatActivity {
     }
 
     public void Login (View view){
-        Intent intent = new Intent(getApplicationContext(),Login.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
     }
 
@@ -124,24 +122,24 @@ public class Register extends AppCompatActivity {
                                     if (task.isSuccessful()){
                                         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                         if (user.isEmailVerified()){
-                                            Toast.makeText(Register.this,"User has been registered successfully",Toast.LENGTH_LONG).show();
-                                            startActivity(new Intent(getApplicationContext(), Login.class));
+                                            Toast.makeText(RegisterActivity.this,"User has been registered successfully",Toast.LENGTH_LONG).show();
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                             progressBar.setVisibility(View.GONE);
                                         } else {
                                             user.sendEmailVerification();
-                                            Toast.makeText(Register.this, "Check your email to verify account",Toast.LENGTH_LONG).show();
+                                            Toast.makeText(RegisterActivity.this, "Check your email to verify account",Toast.LENGTH_LONG).show();
                                             progressBar.setVisibility(View.GONE);
-                                            startActivity(new Intent(getApplicationContext(), Login.class));
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                         }
 
                                     } else {
-                                        Toast.makeText(Register.this,"Failed to register",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(RegisterActivity.this,"Failed to register",Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
                         } else {
-                            Toast.makeText(Register.this,"Failed Register",Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this,"Failed Register",Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }

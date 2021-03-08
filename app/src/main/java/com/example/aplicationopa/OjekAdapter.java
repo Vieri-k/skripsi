@@ -4,12 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcel;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,21 +18,20 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class adapterojek extends FirebaseRecyclerAdapter<model, adapterojek.myviewholder> {
+public class OjekAdapter extends FirebaseRecyclerAdapter<OjekModel, OjekAdapter.myviewholder> {
     private Context mContext;
     private ArrayList<String> name = new ArrayList<>();
     private ArrayList<String> phone = new ArrayList<>();
     private ArrayList<String> region = new ArrayList<>();
 
-    public adapterojek(@NonNull FirebaseRecyclerOptions<model> options)
+    public OjekAdapter(@NonNull FirebaseRecyclerOptions<OjekModel> options)
     {
         super(options);
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull final myviewholder holder, final int position, @NonNull final model model)
+    protected void onBindViewHolder(@NonNull final myviewholder holder, final int position, @NonNull final OjekModel model)
     {
         holder.name.setText(model.getName());
         holder.phone.setText(model.getPhone());
@@ -60,7 +57,7 @@ public class adapterojek extends FirebaseRecyclerAdapter<model, adapterojek.myvi
                         FirebaseDatabase.getInstance().getReference().child("driver")
                                 .child(getRef(position).getKey()).removeValue();
 
-                        Intent intent = new Intent(context,ontheway.class);
+                        Intent intent = new Intent(context, OnthewayActivity.class);
                         intent.putExtra("name", model.getName());
                         intent.putExtra("phone", model.getPhone());
                         intent.putExtra("region", model.getRegion());

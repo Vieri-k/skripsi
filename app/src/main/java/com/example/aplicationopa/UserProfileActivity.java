@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class userprofile extends AppCompatActivity{
+public class UserProfileActivity extends AppCompatActivity{
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -47,7 +45,7 @@ public class userprofile extends AppCompatActivity{
         reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                UserModel user = snapshot.getValue(UserModel.class);
 
                 if (user != null){
                     String fullname = user.getName();
@@ -64,7 +62,7 @@ public class userprofile extends AppCompatActivity{
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(userprofile.this,"Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(UserProfileActivity.this,"Error !",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -74,12 +72,12 @@ public class userprofile extends AppCompatActivity{
     public void logout(View view){
         Toast.makeText(this,"Logout", Toast.LENGTH_SHORT).show();
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(this,Login.class));
+        startActivity(new Intent(this, LoginActivity.class));
         this.finish();
     }
 
     public void back(View view){
-        Intent intent = new Intent(getApplicationContext(),Dashboard.class);
+        Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
         startActivity(intent);
     }
 }

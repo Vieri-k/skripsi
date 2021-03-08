@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -41,7 +39,7 @@ import java.util.TimerTask;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class order extends AppCompatActivity {
+public class OrderConfirmationActivity extends AppCompatActivity {
 
     TextView loc, dist, Ototal, Tname, Tphone, Torigin, Tdestination, tx, tx2, UIDD;
     String l = "1";
@@ -85,7 +83,7 @@ public class order extends AppCompatActivity {
         reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                UserModel user = snapshot.getValue(UserModel.class);
 
                 if (user != null){
                     String fullname = user.getName();
@@ -99,7 +97,7 @@ public class order extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(order.this,"Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(OrderConfirmationActivity.this,"Error !",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -158,7 +156,7 @@ public class order extends AppCompatActivity {
                     @Override
                     public void run() {
 
-                        servisku.getLocation(order.this);
+                        servisku.getLocation(OrderConfirmationActivity.this);
 
                         if (servisku.canGetLocation()) {
 
@@ -249,14 +247,14 @@ public class order extends AppCompatActivity {
     }
 
     private void update(){
-        Intent nt = new Intent(order.this, MainOjek.class);
+        Intent nt = new Intent(OrderConfirmationActivity.this, OjekMapActivity.class);
         nt.putExtra("TotalPaying",li+"");
         nt.putExtra("OrderID",UIDD.getText().toString()+"");
         startActivity(nt);
     }
 
     public void backtomap(View view){
-        Intent intent = new Intent(getApplicationContext(),home.class);
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
         startActivity(intent);
     }
 
@@ -324,7 +322,7 @@ public class order extends AppCompatActivity {
     }
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
-        new AlertDialog.Builder(order.this)
+        new AlertDialog.Builder(OrderConfirmationActivity.this)
                 .setMessage(message)
                 .setPositiveButton("OK", okListener)
                 .setNegativeButton("Cancel", null)

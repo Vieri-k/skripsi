@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/mapbox_plugins_white"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <ProgressBar
         android:id="@+id/progres_bar_login"

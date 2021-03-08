@@ -16,15 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ontheway" />
-        <activity android:name=".MainOjek" />
-        <activity android:name=".order" />
-        <activity android:name=".userprofile" />
-        <activity android:name=".Dashboard" />
-        <activity android:name=".ProfileOjek" />
-        <activity android:name=".home" />
-        <activity android:name=".Register" />
-        <activity android:name=".Login" />
+        <activity android:name=".OnthewayActivity" />
+        <activity android:name=".OjekMapActivity" />
+        <activity android:name=".OrderConfirmationActivity" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".ProfileOjekActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

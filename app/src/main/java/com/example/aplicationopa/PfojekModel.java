@@ -1,9 +1,9 @@
 package com.example.aplicationopa;
 
-public class pfojek {
+public class PfojekModel {
     public String name, phone, region;
 
-    public pfojek(){
+    public PfojekModel(){
 
     }
 }

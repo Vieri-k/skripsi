@@ -1,6 +1,5 @@
 package com.example.aplicationopa;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,21 +8,16 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ProfileOjek extends AppCompatActivity {
-    com.example.aplicationopa.adapterojek adapter;
-    private List<pfojek> orderO;
+public class ProfileOjekActivity extends AppCompatActivity {
+    OjekAdapter adapter;
+    private List<PfojekModel> orderO;
     private RecyclerView recyclerView;
-    private OList adap;
+    private OrderListAdapter adap;
     DatabaseReference db;
 
     @Override
@@ -35,12 +29,12 @@ public class ProfileOjek extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseRecyclerOptions<model> options =
-                new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference("driver").limitToFirst(1), model.class)
+        FirebaseRecyclerOptions<OjekModel> options =
+                new FirebaseRecyclerOptions.Builder<OjekModel>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference("driver").limitToFirst(1), OjekModel.class)
                         .build();
 
-        adapter = new adapterojek(options);
+        adapter = new OjekAdapter(options);
         recyclerView.setAdapter(adapter);
 
     }

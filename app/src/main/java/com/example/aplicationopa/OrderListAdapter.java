@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class OList extends RecyclerView.Adapter<OList.OrderViewHolder> {
+public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.OrderViewHolder> {
 
     private Context mCtx;
-    private List<pfojek> orderL;
+    private List<PfojekModel> orderL;
 
 
-    public OList(Context mCtx, List<pfojek> orderL) {
+    public OrderListAdapter(Context mCtx, List<PfojekModel> orderL) {
         this.mCtx = mCtx;
         this.orderL = orderL;
     }
@@ -31,7 +31,7 @@ public class OList extends RecyclerView.Adapter<OList.OrderViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        pfojek orderm = orderL.get(position);
+        PfojekModel orderm = orderL.get(position);
         holder.textViewName.setText(orderm.name);
         holder.textViewPhone.setText(orderm.phone);
         holder.textViewRegion.setText(orderm.region);

@@ -1,14 +1,14 @@
 package com.example.aplicationopa;
 
-public class User {
+public class UserModel {
 
     private String name, Email, Phone;
 
-    public User(){
+    public UserModel(){
 
     }
 
-    public User(String name, String Email, String Phone){
+    public UserModel(String name, String Email, String Phone){
         this.name = name;
         this.Email = Email;
         this.Phone = Phone;

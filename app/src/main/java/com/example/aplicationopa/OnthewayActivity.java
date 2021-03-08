@@ -9,11 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +30,6 @@ import com.mapbox.android.core.permissions.PermissionsManager;
 import com.mapbox.geojson.Feature;
 import com.mapbox.geojson.Point;
 import com.mapbox.mapboxsdk.Mapbox;
-import com.mapbox.mapboxsdk.annotations.MarkerOptions;
 import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.location.LocationComponent;
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions;
@@ -46,7 +43,6 @@ import com.mapbox.mapboxsdk.style.layers.SymbolLayer;
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource;
 
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +53,7 @@ import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconAllowOverlap
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconIgnorePlacement;
 import static com.mapbox.mapboxsdk.style.layers.PropertyFactory.iconImage;
 
-public class ontheway extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
+public class OnthewayActivity extends AppCompatActivity implements OnMapReadyCallback, PermissionsListener {
 
     private MapboxMap mapboxMap;
     private MapView mapView;
@@ -94,7 +90,7 @@ public class ontheway extends AppCompatActivity implements OnMapReadyCallback, P
         reference.child(UserID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User user = snapshot.getValue(User.class);
+                UserModel user = snapshot.getValue(UserModel.class);
 
                 if (user != null){
                     String fullname = user.getName();
@@ -105,7 +101,7 @@ public class ontheway extends AppCompatActivity implements OnMapReadyCallback, P
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ontheway.this,"Error !",Toast.LENGTH_SHORT).show();
+                Toast.makeText(OnthewayActivity.this,"Error !",Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -184,7 +180,7 @@ public class ontheway extends AppCompatActivity implements OnMapReadyCallback, P
                                 regionn.setText("");
 //                        purl.setText("");
                                 Toast.makeText(getApplicationContext(), "Order Done", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(),Dashboard.class);
+                                Intent intent = new Intent(getApplicationContext(), DashboardActivity.class);
                                 startActivity(intent);
                             }
                         })
