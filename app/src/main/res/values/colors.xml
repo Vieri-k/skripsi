@@ -2,9 +2,15 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#1E212B</color>
     <color name="bg_color">#028090</color>
     <color name="edit_text">#FFFFFF</color>
     <color name="register_bg">#1A5E63</color>
     <color name="btn">#F0F3BD</color>
+    <color name="colorPrimary_neutral">#E8E5E0</color>
+    <color name="colorPrimaryDark_neutral">#E8E5E0</color>
+    <color name="colorAccent_neutral">#FFFFFF</color>
+    <color name="navigationRouteLine_neutral">#00BAFF</color>
+    <color name="cardHourAndPhoneTextColor_neutral">#000000</color>
+    <color name="warnautama">#05668d</color>
 </resources>
